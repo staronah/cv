@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victory Joshua - Haute Couture Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cinzel:wght@400;700;900&family=Raleway:wght@200;300;400;500&display=swap');
+        
+        :root {
+            --primary: #050505;
+            --gold: #c8a165;
+            --rose: #c05d72;
+            --ivory: #f9f7f3;
+            --dark: #111;
+            --gray: #888;
+            --gold-gradient: linear-gradient(135deg, #c8a165 0%, #e2c992 50%, #c8a165 100%);
+            --rose-gradient: linear-gradient(135deg, #c05d72 0%, #e88a9f 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+            line-height: 1.8;
+            background-color: var(--primary);
+            color: var(--ivory);
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            background: var(--primary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Artistic background elements */
+        .bg-line {
+            position: fixed;
+            top: 0;
+            left: 5%;
+            width: 1px;
+            height: 100vh;
+            background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        .bg-line:nth-child(2) {
+            left: 15%;
+            height: 70vh;
+            top: 30vh;
+        }
+        
+        .bg-line:nth-child(3) {
+            left: 85%;
+            height: 90vh;
+        }
+        
+        .golden-circle {
+            position: fixed;
+            bottom: -250px;
+            right: -250px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .golden-circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+        }
+        
+        /* Header section */
+        .header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            padding: 40px 60px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 200;
+            letter-spacing: 3px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+        
+        .navbar a {
+            color: var(--ivory);
+            text-decoration: none;
+            margin-left: 40px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        .navbar a:hover {
+            color: var(--gold);
+        }
+        
+        .navbar a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            padding: 0 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .brand-title {
+            font-size: 0.8em;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 300;
+            position: relative;
+            padding-left: 60px;
+        }
+        
+        .brand-title::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 6em;
+            font-weight: 900;
+            line-height: 1;
+            margin: 0;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+        
+        h2.title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2em;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--ivory);
+            margin-bottom: 40px;
+        }
+        
+        .hero-description {
+            max-width: 500px;
+            line-height: 2;
+            margin-bottom: 40px;
+            color: rgba(249, 247, 243, 0.8);
+        }
+        
+        .contact-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .contact-links a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            text-decoration: none;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transform: scale(0);
+            opacity: 0;
+            transition: all 0.4s ease;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .contact-links a:hover {
+            color: var(--primary);
+        }
+        
+        .contact-links a:hover::before {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .image-frame {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .hero-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, var(--primary) 0%, transparent 100%);
+            z-index: 1;
+        }
+        
+        .contact-panel {
+            position: absolute;
+            left: 60px;
+            bottom: 60px;
+            z-index: 5;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            opacity: 1;
+        }
+        
+        .contact-item i {
+            color: var(--gold);
+            margin-right: 15px;
+            font-size: 0.9em;
+        }
+        
+        /* Content section */
+        .content {
+            padding: 120px 60px;
+            background: var(--ivory);
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .content::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: var(--ivory);
+            clip-path: polygon(0 100%, 100% 100%, 100% 0);
+        }
+        
+        section {
+            margin-bottom: 100px;
+            position: relative;
+        }
+        
+        section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .section-heading {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-number {
+            font-family: 'Cinzel', serif;
+            font-size: 5em;
+            font-weight: 300;
+            color: rgba(200, 161, 101, 0.15);
+            line-height: 1;
+            margin-right: 30px;
+        }
+        
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary);
+            font-size: 2.5em;
+            position: relative;
+            font-weight: 500;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+        }
+        
+        .timeline {
+            position: relative;
+            margin-left: 60px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--gold), rgba(200, 161, 101, 0.2));
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 70px;
+            padding-right: 30px;
+            position: relative;
+        }
+        
+        .experience-item:last-child, .education-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .experience-item::before, .education-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--ivory);
+            border: 1px solid var(--gold);
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .experience-item:hover::before, .education-item:hover::before {
+            transform: scale(1.2);
+            background: var(--gold);
+        }
+
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--dark);
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .date {
+            color: var(--gray);
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .date i {
+            margin-right: 8px;
+            color: var(--gold);
+        }
+        
+        .separator {
+            margin: 0 15px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+
+        ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+            font-weight: 300;
+        }
+        
+        li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 10px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .professional-summary {
+            font-size: 1.2em;
+            line-height: 2;
+            color: #444;
+            max-width: 80%;
+            position: relative;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+        }
+        
+        .quote-mark {
+            position: absolute;
+            top: -80px;
+            left: -70px;
+            font-size: 200px;
+            font-family: 'Cormorant Garamond', serif;
+            color: rgba(200, 161, 101, 0.1);
+            z-index: -1;
+        }
+
+        /* Skills section */
+        .skills-wrapper {
+            margin-top: 60px;
+        }
+        
+        .skill-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 50px 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        }
+        
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gold-gradient);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .skill-category:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .skill-icon {
+            font-size: 2em;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .skill-category h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--dark);
+            font-weight: 500;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .skill-list li {
+            margin-bottom: 15px;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+        
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2em;
+            color: var(--gold);
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 30px;
+        }
+        
+        .footer-links a {
+            color: rgba(249, 247, 243, 0.7);
+            text-decoration: none;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            color: rgba(249, 247, 243, 0.5);
+            font-size: 0.9em;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+        }
+        
+        /* Cursor styling */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease;
+            transform: translate(-50%, -50%);
+        }
+        
+        .cursor-dot {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--gold);
+            pointer-events: none;
+            z-index: 9999;
+            transition: opacity 0.2s ease;
+            transform: translate(-50%, -50%);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 5em;
+            }
+            
+            .skill-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .navbar {
+                justify-content: center;
+                padding: 30px;
+            }
+            
+            .navbar a {
+                margin: 0 15px;
+            }
+            
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content {
+                padding: 150px 30px 50px;
+                text-align: center;
+            }
+            
+            .brand-title {
+                padding-left: 0;
+                margin: 0 auto 20px;
+            }
+            
+            .brand-title::before {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 3.5em;
+            }
+            
+            .hero-description {
+                margin: 0 auto 40px;
+            }
+            
+            .contact-links {
+                justify-content: center;
+            }
+            
+            .image-frame {
+                height: 50vh;
+            }
+            
+            .contact-panel {
+                position: static;
+                margin-top: 40px;
+            }
+            
+            .contact-item {
+                justify-content: center;
+            }
+            
+            .content {
+                padding: 80px 30px;
+            }
+            
+            .section-heading {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .section-number {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .timeline {
+                margin-left: 0;
+            }
+            
+            .timeline::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .experience-item, .education-item {
+                text-align: center;
+                padding-right: 0;
+            }
+            
+            .experience-item::before, .education-item::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .date {
+                justify-content: center;
+            }
+            
+            .professional-summary {
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .quote-mark {
+                display: none;
+            }
+            
+            .skill-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer {
+                padding: 60px 30px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background elements -->
+    <div class="bg-line"></div>
+    <div class="bg-line"></div>
+    <div class="bg-line"></div>
+    <div class="golden-circle"></div>
+    <div class="golden-circle"></div>
+    
+    <!-- Custom cursor (decorative) -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <div class="container">
+        <div class="header">
+            <nav class="navbar">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="brand-title">Fashion Designer</div>
+                    <h1>Victory Joshua</h1>
+                    <h2 class="title">Creating timeless elegance</h2>
+                    <p class="hero-description">Innovative Fashion Designer with expertise in garment construction, trend forecasting, and collaborative design processes. Transforming creative concepts into market-ready collections.</p>
+                    
+                    <div class="contact-links">
+                        <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <div class="image-frame">
+                    <img src="person.jpg" alt="Victory Joshua" class="hero-image">
+                    <div class="image-overlay"></div>
+                </div>
+            </div>
+            
+            <div class="contact-panel">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Kubwa, Abuja, Nigeria</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>joshuavictory0391@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>0703 749 5578</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <section id="about">
+                <div class="section-heading">
+                    <div class="section-number">01</div>
+                    <h2>About</h2>
+                </div>
+                <div class="quote-mark">"</div>
+                <p class="professional-summary">Innovative Fashion Designer with hands-on expertise in garment construction, trend forecasting, and collaborative design processes. Adept at transforming creative concepts into market-ready collections while streamlining production workflows. Combines technical proficiency in embroidery and illustration with strong organizational skills to deliver projects on time.</p>
+            </section>
+
+            <section id="experience">
+                <div class="section-heading">
+                    <div class="section-number">02</div>
+                    <h2>Experience</h2>
+                </div>
+                <div class="timeline">
+                    <div class="experience-item">
+                        <h3>Fashion Intern</h3>
+                        <div class="date">
+                            <i class="far fa-building"></i> Evelyn Fashion Home, Kubwa, Abuja
+                            <div class="separator"></div>
+                            <i class="far fa-calendar-alt"></i> 2022 - Present
+                        </div>
+                        <ul>
+                            <li>Designed and constructed 8+ garments for seasonal collections</li>
+                            <li>Conducted trend research through social media analytics</li>
+                            <li>Streamlined daily workflows reducing task delays by 20%</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3>Personal Assistant</h3>
+                        <div class="date">
+                            <i class="far fa-building"></i> Benson Idahosa University, Benin City, Edo
+                            <div class="separator"></div>
+                            <i class="far fa-calendar-alt"></i> 2020 - 2022
+                        </div>
+                        <ul>
+                            <li>Managed schedules and communications for 3 department heads</li>
+                            <li>Digitized filing systems reducing retrieval time by 30%</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education">
+                <div class="section-heading">
+                    <div class="section-number">03</div>
+                    <h2>Education</h2>
+                </div>
+                <div class="timeline">
+                    <div class="education-item">
+                        <h3>BA in Mass Communication</h3>
+                        <div class="date">
+                            <i class="fas fa-graduation-cap"></i> Benson Idahosa University
+                            <div class="separator"></div>
+                            <i class="far fa-calendar-alt"></i> 2016 - 2020
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills">
+                <div class="section-heading">
+                    <div class="section-number">04</div>
+                    <h2>Skills</h2>
+                </div>
+                <div class="skills-wrapper">
+                    <div class="skill-row">
+                        <div class="skill-category">
+                            <div class="skill-icon">
+                                <i class="fas fa-pencil-ruler"></i>
+                            </div>
+                            <h3>Design & Technical</h3>
+                            <ul class="skill-list">
+                                <li>Garment Construction</li>
+                                <li>Embroidery</li>
+                                <li>Fabric Sourcing</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3>Software</h3>
+                            <ul class="skill-list">
+                                <li>Adobe Illustrator</li>
+                                <li>Canva</li>
+                                <li>Microsoft Office</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3>Soft Skills</h3>
+                            <ul class="skill-list">
+                                <li>Time Management</li>
+                                <li>Problem Solving</li>
+                                <li>Communication</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer class="footer">
+            <div class="footer-logo">VICTORY JOSHUA</div>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="copyright">© 2025 Victory Joshua. All rights reserved.</div>
+        </footer>
+    </div>
+    
+    <script>
+        // Custom cursor animation
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.querySelector('.custom-cursor');
+            const dot = document.querySelector('.cursor-dot');
+            
+            if (cursor && dot) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                dot.style.left = e.clientX + 'px';
+                dot.style.top = e.clientY + 'px';
+            }
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

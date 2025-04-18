@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victory Joshua - Fashion Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --primary: #121212;
+            --secondary: #c9a37e;
+            --accent: #e94e77;
+            --light: #f8f7f5;
+            --dark: #222;
+            --gray: #888;
+            --gradient: linear-gradient(135deg, #c9a37e 0%, #e94e77 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            background-color: var(--light);
+            color: var(--dark);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.05;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 0;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .sidebar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient);
+            z-index: 1;
+        }
+        
+        .background-pattern {
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 50%;
+            height: 50%;
+            background: var(--gradient);
+            opacity: 0.03;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .header {
+            padding: 80px 70px;
+            background: var(--dark);
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/api/placeholder/1200/600') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .photo-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .photo {
+            width: 100%;
+            aspect-ratio: 1/1.3;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 5px solid rgba(255,255,255,0.1);
+        }
+        
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 70%, rgba(0,0,0,0.4) 100%);
+            z-index: 1;
+        }
+        
+        .photo::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid var(--secondary);
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .header-content {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 4.5em;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1;
+            letter-spacing: 2px;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 5px;
+            background: var(--secondary);
+        }
+
+        h2.title {
+            font-size: 1.2em;
+            font-weight: 300;
+            margin-top: 25px;
+            color: var(--secondary);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
+
+        .content {
+            padding: 60px 70px;
+            position: relative;
+        }
+        
+        .diagonal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: var(--light);
+            transform: skewY(-3deg);
+            transform-origin: top left;
+            z-index: 0;
+        }
+
+        section {
+            margin-bottom: 70px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h2 {
+            font-family: 'Bodoni Moda', serif;
+            color: var(--primary);
+            font-size: 2em;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 50px;
+            padding-left: 30px;
+            border-left: 1px solid #ddd;
+            position: relative;
+        }
+        
+        .experience-item::before, .education-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid var(--secondary);
+            box-shadow: 0 0 0 5px rgba(201, 163, 126, 0.1);
+            z-index: 1;
+        }
+
+        h3 {
+            color: var(--dark);
+            font-size: 1.4em;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .date {
+            color: var(--gray);
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .date i {
+            margin-right: 5px;
+            color: var(--secondary);
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-top: 15px;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        li::before {
+            content: "";
+            position: absolute;
+            left: -20px;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--secondary);
+        }
+
+        .contact-info {
+            margin: 25px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .contact-item i {
+            width: 20px;
+            color: var(--secondary);
+        }
+        
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .contact-links a:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 35px;
+            border-radius: 0;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--secondary);
+        }
+        
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--secondary);
+            transition: height 0.4s ease;
+        }
+        
+        .skill-category:hover::before {
+            height: 100%;
+        }
+        
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Bodoni Moda', serif;
+        }
+        
+        .skill-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .professional-summary {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: #555;
+            max-width: 90%;
+            position: relative;
+        }
+        
+        .quote-mark {
+            position: absolute;
+            top: -50px;
+            left: -30px;
+            font-size: 150px;
+            font-family: 'Bodoni Moda', serif;
+            color: rgba(201, 163, 126, 0.1);
+            z-index: -1;
+        }
+        
+        /* Decorative elements */
+        .accent-circle {
+            position: absolute;
+            right: -100px;
+            bottom: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: var(--gradient);
+            opacity: 0.03;
+            z-index: 0;
+        }
+        
+        .accent-dots {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 150px;
+            height: 150px;
+            background-image: radial-gradient(var(--gray) 1px, transparent 1px);
+            background-size: 10px 10px;
+            opacity: 0.1;
+        }
+        
+        @media (max-width: 900px) {
+            .header {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 50px 30px;
+            }
+            
+            .photo {
+                width: 80%;
+                margin: 0 auto;
+            }
+            
+            h1::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .contact-info {
+                align-items: center;
+            }
+            
+            .content {
+                padding: 40px 30px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h2 {
+                text-align: center;
+                display: block;
+            }
+            
+            h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar"></div>
+        <div class="background-pattern"></div>
+        
+        <div class="header">
+            <div class="header-bg"></div>
+            <div class="header-content">
+                <h1>VICTORY JOSHUA</h1>
+                <h2 class="title">Fashion Designer</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kubwa, Abuja, Nigeria</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>joshuavictory0391@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>0703 749 5578</span>
+                    </div>
+                    <div class="contact-links">
+                        <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="photo-container">
+                <div class="photo">
+                    <img src="person.jpg" alt="Victory Joshua">
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="diagonal"></div>
+            <div class="accent-circle"></div>
+            <div class="accent-dots"></div>
+            
+            <section>
+                <h2>Professional Summary</h2>
+                <div class="quote-mark">"</div>
+                <p class="professional-summary">Innovative Fashion Designer with hands-on expertise in garment construction, trend forecasting, and collaborative design processes. Adept at transforming creative concepts into market-ready collections while streamlining production workflows. Combines technical proficiency in embroidery and illustration with strong organizational skills to deliver projects on time.</p>
+            </section>
+
+            <section>
+                <h2>Professional Experience</h2>
+                <div class="experience-item">
+                    <h3>Fashion Intern</h3>
+                    <div class="date">
+                        <i class="far fa-building"></i> Evelyn Fashion Home, Kubwa, Abuja
+                        <span style="margin: 0 10px">|</span>
+                        <i class="far fa-calendar-alt"></i> 2022 - Present
+                    </div>
+                    <ul>
+                        <li>Designed and constructed 8+ garments for seasonal collections</li>
+                        <li>Conducted trend research through social media analytics</li>
+                        <li>Streamlined daily workflows reducing task delays by 20%</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Personal Assistant</h3>
+                    <div class="date">
+                        <i class="far fa-building"></i> Benson Idahosa University, Benin City, Edo
+                        <span style="margin: 0 10px">|</span>
+                        <i class="far fa-calendar-alt"></i> 2020 - 2022
+                    </div>
+                    <ul>
+                        <li>Managed schedules and communications for 3 department heads</li>
+                        <li>Digitized filing systems reducing retrieval time by 30%</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Education</h2>
+                <div class="education-item">
+                    <h3>BA in Mass Communication</h3>
+                    <div class="date">
+                        <i class="fas fa-graduation-cap"></i> Benson Idahosa University
+                        <span style="margin: 0 10px">|</span>
+                        <i class="far fa-calendar-alt"></i> 2016 - 2020
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Design & Technical</h3>
+                        <ul>
+                            <li>Garment Construction</li>
+                            <li>Embroidery</li>
+                            <li>Fabric Sourcing</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Software</h3>
+                        <ul>
+                            <li>Adobe Illustrator</li>
+                            <li>Canva</li>
+                            <li>Microsoft Office</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Soft Skills</h3>
+                        <ul>
+                            <li>Time Management</li>
+                            <li>Problem Solving</li>
+                            <li>Communication</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
